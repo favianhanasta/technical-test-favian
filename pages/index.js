@@ -40,7 +40,7 @@ function Home(props) {
   }
 
   const handleSelect = (event) => {
-    setData([]);
+    setData([]); // fade in
     axios.get(`https://randomuser.me/api/?page=1&results=10&&nat=${event.toLocaleLowerCase()}`)
       .then((res) => {
         setData(res.data.results);
@@ -76,7 +76,7 @@ function Home(props) {
               <Col span={6}>
                 <div>
                   <p style={{ color: 'grey' }}>Date of Birth</p>
-                  <p style={{ marginTop: '-1rem' }}>{moment(value.dob.date).format('DD/MM/YYYY')}</p>
+                  <p style={{ marginTop: '-1rem' }}>{moment(value.dob.date).format('DD/MM/YYYY, hh:mm:ss a')}</p>
                 </div>
                 <div>
                   <p style={{ color: 'grey' }}>Age</p>
