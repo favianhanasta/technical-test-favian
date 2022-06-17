@@ -26,14 +26,6 @@
   }
 }
 
-.fotoProfil{
-  border-radius: 50%;
-}
-
-.firstContent{
-  display: flex;
-}
-
 .modalBody{
   border-left:0.5px solid #dfe6e9;
   padding-left: 1rem;
