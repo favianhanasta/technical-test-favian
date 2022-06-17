@@ -56,8 +56,8 @@ function Home(props) {
           <div key={index} className={styles.bodyList}>
             <Row>
               <Col span={12}>
-                <div style={{display:'flex'}}>
-                  <img src={value.picture.large} style={{borderRadius:'50%'}} alt='picture profile' />
+                <div className={styles.firstContent}>
+                  <img src={value.picture.large} className={styles.fotoProfil} alt='picture profile' />
                   <div style={{ marginLeft: '1rem' }}>
                     <p style={{ fontWeight: '600', fontSize: '18px' }}>{`${value.name.title}. ${value.name.first} ${value.name.last}`}</p>
                     <p style={{ marginTop: '-1rem' }}>{value.email}</p>
