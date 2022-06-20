@@ -45,6 +45,7 @@ function Home(props) {
     axios.get(`https://randomuser.me/api/?page=1&results=10&&nat=${event.toLocaleLowerCase()}`)
       .then((res) => {
         setData(res.data.results);
+        setCurrent(1);
       })
       .catch((error) => console.log(error));
   }
