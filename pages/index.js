@@ -47,7 +47,6 @@ function Home(props) {
         setData(res.data.results);
       })
       .catch((error) => console.log(error));
-    console.log(filterNat);
   }
 
   const printUserList = () => {
