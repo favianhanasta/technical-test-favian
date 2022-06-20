@@ -1,4 +1,4 @@
-import { Spin, Col, Row, Button, Divider, Select } from "antd";
+import { Spin, Col, Row, Button, Divider, Select, Pagination } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -13,6 +13,7 @@ function Home(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [dataModal, setDataModal] = useState({});
+  const [current, setCurrent] = useState(1);
 
   useEffect(() => {
     getData()
@@ -51,7 +52,7 @@ function Home(props) {
 
   const printUserList = () => {
     if (data.length > 0) {
-      return data.map((value, index) => {
+      return data.slice(current > 1 ? (current - 1) * 5 : current - 1, current * 5).map((value, index) => {
         return (
           <div key={index} className={styles.bodyList}>
             <Row>
@@ -101,6 +102,15 @@ function Home(props) {
     })
   }
 
+  const printBtPagination = () => {
+    let btn = []
+    for (let i = 0; i < Math.ceil(data.length / 5); i++) {
+      btn.push(<Button onClick={() => setCurrent(i + 1)} key={i} disabled={i+1 == current ? true : false}   >{i + 1}</Button>)
+    }
+    return btn;
+  }
+
+
   if (isLoading) {
     return (
       <div style={{ padding: '20rem' }}>
@@ -130,6 +140,11 @@ function Home(props) {
           </div>
           <div>
             {printUserList()}
+          </div>
+          <div style={{ marginTop: '5rem', marginBottom: '5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              {printBtPagination()}
+            </div>
           </div>
         </div>
       </>
